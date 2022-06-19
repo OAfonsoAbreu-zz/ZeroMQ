@@ -14,6 +14,7 @@ namespace PublisherZMQ
 
             using (var publisher = new PublisherSocket())
             {
+                //Disponibiliza endpoint
                 publisher.Bind(address);
 
                 var rnd = new Random();
@@ -24,8 +25,10 @@ namespace PublisherZMQ
                     int zipcode = rnd.Next(99999);
                     int temperature = rnd.Next(-55, +45);
 
+                    //Criação de msg com Topico + Dados
                     var update = string.Format("{0:D5} {1}", zipcode, temperature); //topic msg
 
+                    //Criação de msg com Topico e Dados separados
                     var topic = string.Format("{0:D5}", zipcode);
                     var msg = string.Format("{0}", temperature); 
 

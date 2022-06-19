@@ -27,15 +27,16 @@ namespace SubscriberZMQ
 
 			using (var subscriber = new SubscriberSocket())
             {
+				//Conecta ao endpoint
 				Console.WriteLine("I: Connecting to {0}...", endpoint);
 				subscriber.Connect(endpoint);
 
-				// Subscribe to zipcode
+				// Faz assinatura pelo CEP
 				string zipCode = args[0];
 				Console.WriteLine("I: Subscribing to zip code {0}...", zipCode);
 				subscriber.Subscribe(zipCode);
 
-				// Process 10 updates
+				// Processa 20 atualizacoes para o topico informado
 				int i = 0;
 				long total_temperature = 0;
 				for (; i < 20; ++i)
