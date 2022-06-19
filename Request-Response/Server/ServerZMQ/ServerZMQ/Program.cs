@@ -30,13 +30,14 @@ namespace ServerZMQ
 
                     if(msg.ToUpper() == "HELLO")
                     {
-                        Console.WriteLine("Received {0}", msg);
+                        Console.WriteLine("Received: {0}", msg);
                         Thread.Sleep(1);
                         server.SendFrame(name);
                     }
                     else
                     {
                         Console.WriteLine("The message was not recognized");
+                        server.SendFrame("-");
                     }
                         
                 }
